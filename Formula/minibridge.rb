@@ -20,6 +20,19 @@ class Minibridge < Formula
     bin.install_symlink libexec/"bin/minibridge.mjs" => "minibridge"
   end
 
+  def caveats
+    <<~EOS
+      Start the bridge, which shows a pairing code on first run:
+        brew services start minibridge
+
+      If you installed the bridge with the curl script before this, it left its
+      own launchd agent that holds port 4720. Remove it, or the Homebrew service
+      cannot start:
+        launchctl bootout gui/$(id -u)/co.nvdk.minibridge
+        rm ~/Library/LaunchAgents/co.nvdk.minibridge.plist
+    EOS
+  end
+
   service do
     run [opt_bin/"minibridge", "serve"]
     keep_alive true
