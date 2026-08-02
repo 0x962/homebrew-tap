@@ -10,6 +10,13 @@ class Minibridge < Formula
   def install
     system "npm", "install", *std_npm_args(prefix: false)
     libexec.install Dir["*"]
+
+    # node-pty carries a prebuilt binary for every platform. Keep this one.
+    native = "darwin-#{Hardware::CPU.arm? ? "arm64" : "x64"}"
+    prebuilds = libexec/"node_modules/node-pty/prebuilds"
+    prebuilds.children.each { |dir| rm_rf dir if dir.basename.to_s != native }
+    chmod 0755, prebuilds/native/"spawn-helper"
+
     bin.install_symlink libexec/"bin/minibridge.mjs" => "minibridge"
   end
 
