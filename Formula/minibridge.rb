@@ -1,8 +1,8 @@
 class Minibridge < Formula
   desc "Bridge that runs Aside commands for the Aside phone app"
   homepage "https://github.com/0x962/aside-mobile-manager"
-  url "https://github.com/0x962/aside-mobile-manager/releases/download/bridge-v1.0.1/minibridge-1.0.1.tar.gz"
-  sha256 "b5166e24d4736d5c191ea4a0763c3055b2e2dcf0aa7240adac88cc23638b2e73"
+  url "https://github.com/0x962/aside-mobile-manager/releases/download/bridge-v1.0.2/minibridge-1.0.2.tar.gz"
+  sha256 "ca8cf7551679e6c7c42bb65c65bde7f9d6080e10b6064e187e29b47c2050bf71"
   license "MIT"
 
   depends_on "node"
